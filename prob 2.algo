@@ -1,0 +1,36 @@
+FUNCTION dot_product(v1, v2: ARRAY_OF_INTEGER[10]): INTEGER
+VAR
+    dot: INTEGER := 0
+    i: INTEGER
+BEGIN
+    IF (v1.length <> v2.length) THEN
+        WRITE("Vectors have different sizes. Cannot calculate dot product.")
+        RETURN 0
+    END_IF
+
+    FOR i FROM 0 TO v1.length-1 DO
+        dot := dot + v1[i] * v2[i]
+    END_FOR
+
+    RETURN dot
+END
+
+ALGORITHM orth_vect
+VAR
+    v1, v2: ARRAY_OF_INTEGER[10]
+    dot: INTEGER
+BEGIN
+    WRITE("Enter the first vector:")
+    READ(v1)
+
+    WRITE("Enter the second vector:")
+    READ(v2)
+
+    dot := dot_product(v1, v2)
+
+    IF (dot = 0) THEN
+        WRITE("v1 and v2 are orthogonal.")
+    ELSE
+        WRITE("v1 and v2 are not orthogonal.")
+    END_IF
+END

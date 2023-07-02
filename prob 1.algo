@@ -1,0 +1,31 @@
+ALGORITHM FindDistinctSum(set1, set2)
+VAR
+    distinctSum : INTEGER := 0
+BEGIN
+    FOR i FROM 0 TO set1.length-1 DO
+        IF (isDistinct(set1[i], set2)) THEN
+            distinctSum := distinctSum + set1[i]
+        END_IF
+    END_FOR
+
+    FOR j FROM 0 TO set2.length-1 DO
+        IF (isDistinct(set2[j], set1)) THEN
+            distinctSum := distinctSum + set2[j]
+        END_IF
+    END_FOR
+
+    WRITE(distinctSum)
+END
+
+FUNCTION isDistinct(element, set)
+VAR
+    i : INTEGER
+BEGIN
+    FOR i FROM 0 TO set.length-1 DO
+        IF (element = set[i]) THEN
+            RETURN FALSE
+        END_IF
+    END_FOR
+
+    RETURN TRUE
+END
